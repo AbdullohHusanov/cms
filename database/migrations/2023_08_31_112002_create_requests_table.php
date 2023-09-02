@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user');
+            $table->bigInteger('client');
+            $table->integer('status');
+            $table->integer('message');
             $table->timestamps();
+        });
+        Schema::table('requests', function (Blueprint $table) {
+            $table->foreign('client')->references('id')->on('clients');
+            $table->foreign('user')->references('id')->on('users');
         });
     }
 

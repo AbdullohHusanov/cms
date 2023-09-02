@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('regions', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('city')->unsigned();
+            $table->string('name');
             $table->timestamps();
+        });
+        Schema::table('regions', function (Blueprint $table) {
+            $table->foreign('city')->references('id')->on('cities');
         });
     }
 
