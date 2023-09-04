@@ -13,7 +13,7 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
+        return Request::all();
     }
 
     /**
@@ -21,7 +21,7 @@ class RequestController extends Controller
      */
     public function store(StoreRequestRequest $request)
     {
-        //
+        
     }
 
     /**

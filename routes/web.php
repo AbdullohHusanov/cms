@@ -18,9 +18,9 @@ Route::get('/', function () {
 });
 Route::group(['prefix' => 'api'], function () {
     Route::post('login', 'AuthController@login');
-    Route::group(['middleware' => 'auth:sanctum','cors'], function () {
-        Route::get('/clients', 'ClientController@index');
-        Route::get('/certificates', 'CertificateController@index');
+//    Route::group(['middleware' => 'auth:sanctum','cors'], function () {
+        Route::get('/clients', [\App\Http\Controllers\ClientController::class, 'index']);
+        Route::get('/certificates', [\App\Http\Controllers\CertificateController::class, 'index']);
         Route::get('/requests', 'RequestController@index');
-    });
+//    });
 });

@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('client_id');
-            $table->bigInteger('user_id');
+            $table->bigInteger('client_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->string('token');
-            $table->string('');
+            $table->string('file_path');
             $table->string('expiry_date_start');
             $table->string('expire_date_finish');
             $table->timestamps();
