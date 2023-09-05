@@ -16,11 +16,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
 Route::group(['prefix' => 'api'], function () {
-    Route::post('login', 'AuthController@login');
-//    Route::group(['middleware' => 'auth:sanctum','cors'], function () {
-        Route::get('/clients', [\App\Http\Controllers\ClientController::class, 'index']);
-        Route::get('/certificates', [\App\Http\Controllers\CertificateController::class, 'index']);
-        Route::get('/requests', 'RequestController@index');
-//    });
+    Route::group(['namespace' => 'App\Http\Controllers',], function () {
+        Route::post('/login', 'AuthController@login');
+        Route::group(['middleware' => 'auth:sanctum', 'cors'], function () {
+
+            #Auth
+            Route::post('/register', 'UserController@register');
+            Route::post('/logout', 'UserController@logout');
+            Route::post('/destroy/{id}', 'UserController@destroy');
+
+            #Client
+            Route::get('/clients', 'ClientController@index');
+
+            #Certificate
+            Route::get('/certificates', 'CertificateController@index');
+
+            #Request
+            Route::get('/requests', 'RequestController@index');
+        });
+    });
 });

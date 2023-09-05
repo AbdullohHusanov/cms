@@ -21,7 +21,7 @@ class RequestController extends Controller
      */
     public function store(StoreRequestRequest $request)
     {
-        
+
     }
 
     /**
@@ -35,7 +35,7 @@ class RequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequestRequest $request, Request $request)
+    public function update(Request $request)
     {
         //
     }

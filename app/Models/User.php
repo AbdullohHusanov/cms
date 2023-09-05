@@ -7,20 +7,42 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+//use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+//    use HasRoles;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
-        'name',
+        'cname',
+        'sname',
+        'location',
+        'state',
+        'country',
+        'address',
         'email',
+        'organisation',
+        'org_unit',
+        'description',
+        'job',
+        'accounter',
+        'status',
+        'login',
+        'inn',
+        'pinfl',
+        'passport_number',
+        'phone',
+        'localCode',
+        'smsuid',
+        'fix',
         'password',
+        'comment',
+        'operator_id',
+        'branch_user_id',
+        'iabsID',
+        'fido_user_id',
+        'fido_user_type_id',
     ];
 
     /**
@@ -42,4 +64,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function roles()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+
 }
