@@ -2,24 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCertificateRequest;
-use App\Http\Requests\UpdateCertificateRequest;
-use App\Models\Certificate;
+use App\Models\Street;
+use Illuminate\Http\Request;
 
-class CertificateController extends Controller
+class StreetController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Certificate::with('client')->get();
+        return Street::all();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCertificateRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -27,7 +26,7 @@ class CertificateController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Certificate $certificate)
+    public function show(Street $street)
     {
         //
     }
@@ -35,7 +34,7 @@ class CertificateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCertificateRequest $request, Certificate $certificate)
+    public function update(Request $request, Street $street)
     {
         //
     }
@@ -43,7 +42,7 @@ class CertificateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Certificate $certificate)
+    public function destroy(Street $street)
     {
         //
     }

@@ -21,6 +21,20 @@ Route::group(['prefix' => 'api'], function () {
 //    Route::group(['middleware' => 'auth:sanctum','cors'], function () {
         Route::get('/clients', [\App\Http\Controllers\ClientController::class, 'index']);
         Route::get('/certificates', [\App\Http\Controllers\CertificateController::class, 'index']);
-        Route::get('/requests', 'RequestController@index');
+        Route::get('/requests', [\App\Http\Controllers\RequestController::class, 'index']);
+
+        Route::post('/client/create', [\App\Http\Controllers\ClientController::class, 'store']);
+        Route::post('/certificates/create', [\App\Http\Controllers\CertificateController::class, 'store']);
+        Route::post('/requests/create', [\App\Http\Controllers\RequestController::class, 'store']);
+
+        Route::put('/client/update/{id}', [\App\Http\Controllers\ClientController::class, 'update']);
+        Route::put('/certificates/update/{id}', [\App\Http\Controllers\CertificateController::class, 'update']);
+        Route::put('/requests/update/{id}', [\App\Http\Controllers\RequestController::class, 'update']);
+
+        Route::delete('/client/delete/{id}', [\App\Http\Controllers\ClientController::class, 'destroy']);
+        Route::delete('/certificates/delete/{id}', [\App\Http\Controllers\CertificateController::class, 'destroy']);
+        Route::delete('/requests/delete/{id}', [\App\Http\Controllers\RequestController::class, 'destroy']);
+
+        Route::put('/requests/update/status/{id}', [\App\Http\Controllers\RequestController::class, 'statusUpdate']);
 //    });
 });
