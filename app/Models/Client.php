@@ -11,7 +11,7 @@ class Client extends Model
 
     protected $table = 'clients';
     protected $fillable = [
-        'user',
+        'user_id',
         'iabs_id',
         'type_certificate',
         'type_client',
@@ -32,4 +32,9 @@ class Client extends Model
         'serial_number_token',
         'document_file',
     ];
+
+    public function certificate()
+    {
+        return $this->hasMany(Certificate::class, 'client_id', 'id');
+    }
 }

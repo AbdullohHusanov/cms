@@ -13,7 +13,7 @@ class RequestController extends Controller
      */
     public function index()
     {
-        return Request::all();
+        return Request::with(['user', 'client'])->get();
     }
 
     /**
@@ -21,7 +21,7 @@ class RequestController extends Controller
      */
     public function store(StoreRequestRequest $request)
     {
-        
+
     }
 
     /**
@@ -35,7 +35,7 @@ class RequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequestRequest $request, Request $request)
+    public function update(UpdateRequestRequest $request, Request $req)
     {
         //
     }
@@ -46,5 +46,10 @@ class RequestController extends Controller
     public function destroy(Request $request)
     {
         //
+    }
+
+    public function statusUpdate(UpdateRequestRequest $request, Request $req)
+    {
+
     }
 }

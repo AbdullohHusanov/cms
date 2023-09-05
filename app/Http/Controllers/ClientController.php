@@ -14,8 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        Auth::routes();
-        return Client::all();
+        return Client::with('certificate')->get();
     }
 
     /**

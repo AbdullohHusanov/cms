@@ -22,7 +22,18 @@ class StoreRequestRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'request' => 'required|string',
+            'container' => 'required|string',
+            'type' => 'required|integer|between:0,3',
+            'file_name' => 'required|string|max:128',
+            'password' => 'nullable|string|max:64',
+            'cng' => 'nullable|integer|between:0,3',
+            'status' => 'required|integer|between:0,3',
+            'refresh' => 'nullable|integer|between:0,3',
+            'user_id' => 'required|integer|exists:users,id',
+            'device_id' => 'required|integer|exists:user_devices,id',
+            'operator_id' => 'nullable|integer|exists:users,id',
+            'branch_user_id' => 'required|integer|exists:branch_users,id',
         ];
     }
 }

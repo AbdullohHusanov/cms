@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->integer('iabs_id');
             $table->string('type_certificate');
             $table->string('type_client');
@@ -37,7 +37,7 @@ return new class extends Migration
         });
 
         Schema::table('clients', function (Blueprint $table) {
-            $table->foreign('user')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('state')->references('id')->on('states');
             $table->foreign('city')->references('id')->on('cities');
             $table->foreign('region')->references('id')->on('regions');
