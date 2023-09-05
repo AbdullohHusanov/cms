@@ -48,7 +48,7 @@ class RequestController extends Controller
         //
     }
 
-    public function statusUpdate(UpdateRequestRequest $request, Request $req)
+    public function statusUpdate(UpdateRequestRequest $request)
     {
 
     }
